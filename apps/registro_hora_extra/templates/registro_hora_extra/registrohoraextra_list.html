@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<a href="{% url 'registro_hora_extra:create_horaextra' %}">Novo</a>
+<table class="table">
+    {% if object_list %}
+    <thead>
+        <tr>
+            <td>Nome</td>
+            <td>Motivo</td>
+            
+            <td>Horas</td>
+            <td>Editar</td>
+        </tr>
+    </thead>
+    
+
+    <tbody>
+  
+        {% for object_re in object_list %}
+        <tr>
+                <td>{{ object_re.funcionario }}</td>
+                <td>{{ object_re.motivo }}</td>
+            
+                <td>{{ object_re.horas }}</td>
+                <td>
+                    <a href="{% url 'registro_hora_extra:edit_hora_extra' object_re.id %}">Editar </a>
+                    <a href="{% url 'registro_hora_extra:delete_hora_extra' object_re.id %}">Remover </a>
+                <br>
+                </td>
+            
+            <br>
+                </td>
+        
+        </tr>
+        
+        
+        
+        {% endfor %}
+    {% else %}
+    <tr>
+        <td>Nenhuma Hora Extra Encontrada </td>
+    </td>
+
+    {% endif %}
+ </tbody>
+</table>
+
+      
+
+{% endblock  %}

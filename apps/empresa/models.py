@@ -1,5 +1,6 @@
 from cProfile import label
 from django.db import models
+from django.urls import reverse
 
 class Empresas(models.Model):
     nome = models.CharField(max_length=100,help_text='Nome da Empresa')
@@ -7,3 +8,7 @@ class Empresas(models.Model):
 
     def __str__(self):
         return self.nome
+
+    def get_absolute_url(self):
+        return reverse('core:home')
+    

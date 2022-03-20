@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<a href="{% url 'departamentos:create' %}">Novo</a>
+<table class="table">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Nome</td>
+            <td>Departamento</td>
+        </tr>
+    </thead>
+    
+
+    <tbody>
+   
+    {% for departamentos in object_list %}
+    <tr>
+            <td>{{departamentos.id}}</td>
+            <td>{{departamentos.nome}}</td>
+         
+            <td>
+              <a href="{% url 'departamentos:update_departamento' departamentos.id %}">Editar </a> 
+             <a href="{% url 'departamentos:delete_departamento' departamentos.id %}">Deletar </a> 
+         <br>
+            </td>
+    
+    </tr>
+    
+     
+    
+    {% endfor %}
+ </tbody>
+</table>
+
+      
+
+{% endblock  %}
