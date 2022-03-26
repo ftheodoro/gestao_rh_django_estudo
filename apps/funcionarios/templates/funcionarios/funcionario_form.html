@@ -10,8 +10,7 @@
 <button type="submit" class="btn btn-success">Salvar</button>
 
 </form>
-<a href="{% url 'documentos:create_documento' object.id %}" class="btn btn-dark">Adicionar Documento</a>
-
+<h2>Documentos</h2>
 
 {% for documentos in object.documento_set.all %}
 <ul class="list-group">
@@ -19,6 +18,22 @@
 </ul>
   
 {% endfor %}
+<a href="{% url 'documentos:create_documento' object.id %}" class="btn btn-dark">Adicionar Documento</a>
+
+<h2>Banco de Horas</h2>
+
+
+{% for registro_hora in object.registrohoraextra_set.all %}
+<ul class="list-group">
+    <li class="list-group-item"><a href="{% url 'registro_hora_extra:edit_hora_extra' registro_hora.id %}"> {{  registro_hora }} | {{registro_hora.horas}}</a></li>
+</ul>
+
+
+  
+{% endfor %}
+<h3>Total Hora Extra {{ object.total_horas_extra }}</h3>
+<a href="{% url 'registro_hora_extra:create_horaextra' %}" class="btn btn-dark">Adicionar Hora Extra</a>
+
 
 
 {% endblock  %}
